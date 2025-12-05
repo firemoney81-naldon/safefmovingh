@@ -1,23 +1,329 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+ <style>
+        /* 기본 스타일 및 부드러운 색감 적용 */
+        body { font-family: 'Noto Sans KR', sans-serif, 'Malgun Gothic', sans-serif; line-height: 1.7; margin: 0; padding: 0; color: #495057; background-color: #f8f9fa; }
+        header, section, footer { padding: 30px 20px; max-width: 1200px; margin: auto; }
+        header { background-color: #3f72af; /* 깊고 부드러운 블루 */ color: #ffffff; text-align: center; padding: 70px 20px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        h1, h2, h3 { color: #112d4e; /* 진한 남색 */ margin-top: 0; font-weight: 700; }
+        h1 { font-size: 2.8em; margin-bottom: 0.5em; }
+        h2 { font-size: 2.2em; margin-bottom: 1em; border-bottom: 4px solid #dbe2ef; padding-bottom: 15px; }
+        h3 { font-size: 1.6em; color: #3f72af; margin-top: 2.5em; }
+        .cta-btn {
+            display: inline-block;
+            padding: 20px 35px;
+            background-color: #f94c66; /* 포인트 레드 */
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 30px;
+            box-shadow: 0 6px 15px rgba(249, 76, 102, 0.4);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .cta-btn:hover { background-color: #d13a52; transform: translateY(-3px); }
+        .content-box { background-color: #ffffff; padding: 30px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); }
+        ul, ol { padding-left: 28px; margin-bottom: 1.8em; }
+        li { margin-bottom: 10px; }
+        blockquote { font-style: italic; border-left: 5px solid #ffc107; margin: 30px 0; padding: 18px 25px; background-color: #fffaf0; color: #8d6e35; border-radius: 10px; }
+        .process-list { list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .process-list li { background-color: #dbe2ef; border-radius: 10px; padding: 25px; font-weight: 600; color: #112d4e; text-align: center; border: 2px solid #3f72af; transition: background-color 0.3s; }
+        .process-list li:hover { background-color: #e8ebf1; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 25px; }
+        .service-item { background-color: #f9f9ff; padding: 25px; border-radius: 12px; border-top: 6px solid #3f72af; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); }
+        .service-item h3 { color: #3f72af; margin-bottom: 15px; font-size: 1.4em; }
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 30px 0; font-size: 0.95em; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); }
+        th, td { border: none; padding: 15px; text-align: left; }
+        th { background-color: #dbe2ef; font-weight: 700; color: #112d4e; border-bottom: 2px solid #3f72af; }
+        td { background-color: #f9f9ff; border-bottom: 1px solid #e0e0e0; }
+        tr:nth-child(even) td { background-color: #f2f6ff; }
+        
+        /* 입력 폼 스타일링 */
+        .input-group { margin-bottom: 25px; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #112d4e; font-size: 1.1em; }
+        .input-group input[type="text"], .input-group input[type="email"], .input-group input[type="tel"], .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #dbe2ef;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 1em;
+            background-color: #fcfdff;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus { border-color: #3f72af; box-shadow: 0 0 8px rgba(63, 114, 175, 0.3); outline: none; }
+        .submit-btn { background-color: #f94c66; color: white; padding: 18px 25px; border: none; border-radius: 10px; cursor: pointer; font-size: 1.2em; font-weight: 700; margin-top: 20px; width: 100%; transition: background-color 0.3s; }
+        .submit-btn:hover { background-color: #d13a52; }
+        
+        iframe { width: 100%; height: 450px; border: none; margin-top: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        footer { background-color: #112d4e; color: #dbe2ef; text-align: center; padding: 30px; font-size: 0.95em; margin-top: 40px; }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MovingCompany",
+        "name": "부산보관이사 전문 센터",
+        "url": "https://your-domain.com/busan-storage-moving",
+        "logo": "https://your-domain.com/logo.png",
+        "description": "부산 전 지역 보관이사, 포장이사, 원룸이사, 사무실이사 전문. 2026년 기준 안전한 보관 시스템 및 무료 견적 상담.",
+        "telephone": "051-123-4567",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "부산광역시",
+            "addressRegion": "부산",
+            "postalCode": "46740",
+            "streetAddress": "부산 연제구 중앙대로 1234"
+        },
+        "areaServed": ["부산광역시", "해운대구", "부산진구", "동래구", "수영구", "금정구", "기장군", "사하구", "연제구", "북구", "강서구", "사상구", "영도구", "중구", "동구", "서구"],
+        "serviceType": ["보관이사", "포장이사", "원룸이사", "사무실이사", "장기보관", "단기보관", "고급 보관이사"]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>부산보관이사: 안전하고 신뢰도 높은 장기/단기 보관 및 전문 포장 이사 서비스</h1>
+        <p>부산 전역 이사 및 보관 서비스 2026년 최신 기준 적용 | 해운대, 서면, 명지 등 지역별 맞춤 전략 | 지금 바로 상세 무료 견적을 받아보세요.</p>
+        <a href="#estimate-form" class="cta-btn">📞 지금 무료 견적 상담 신청하기 (24시간 가능)</a>
+    </header>
+
+    <section id="introduction" class="content-box">
+        <h2>부산보관이사, 전문적인 시스템이 필요한 이유</h2>
+        <p>부산은 국내에서 가장 활발하게 주거 환경이 변화하는 도시 중 하나입니다. 아파트 재개발, 재건축, 신규 아파트 입주 시기 불일치, 인테리어 공사 기간, 혹은 해외 주재원 파견 등으로 인해 **일시적인 이사 물품 보관**에 대한 수요가 매우 높습니다. 일반 이사와 달리 **이사 - 안전 보관 - 재이사**의 3단계 복합 서비스를 제공하는 보관이사는 전문적인 지식과 시설이 필수적입니다. 저희 센터는 단순한 창고 대여를 넘어, 고객님의 소중한 자산을 최적의 상태로 보존하는 **자산 보관 솔루션**을 제공합니다.</p>
+        <p>특히 **2026년도**의 강화된 물류 및 보관 환경 규정을 선도적으로 준수하며, 부산의 고유한 해양성 기후(높은 습도)에 완벽하게 대비한 **제습 및 항온 시설**을 갖추고 있습니다. 모든 물품은 체계적인 관리 시스템 아래에서 입고부터 출고까지 빈틈없이 관리됩니다. 부산 지역에서 가장 신뢰할 수 있는 보관이사 파트너를 찾으신다면 저희에게 문의하십시오.</p>
+    </section>
+
+    <hr>
+
+    <section id="services" class="content-box">
+        <h2>제공되는 주요 보관 및 이사 서비스</h2>
+        <div class="service-grid">
+            <div class="service-item">
+                <h3>장기/단기 보관이사</h3>
+                <p>이사 날짜가 맞지 않거나, 장기간 출타로 인해 짐을 보관해야 할 때. 기간에 구애받지 않고 물품 종류에 따른 맞춤형 보관 환경을 제공합니다. 1개월부터 1년 이상 장기 보관까지 가능합니다.</p>
+            </div>
+            <div class="service-item">
+                <h3>원룸/소형 보관이사</h3>
+                <p>소규모 짐, 원룸 이사 짐에 특화된 경제적인 보관 옵션. 부산대학교, 부경대학교 인근 학생들의 방학 기간 보관 수요나 1인 가구의 소규모 이사에 최적화된 서비스를 합리적인 비용으로 제공합니다.</p>
+            </div>
+            <div class="service-item">
+                <h3>사무실/기업 보관</h3>
+                <p>서류, 서버, 사무기기, 집기류 등 기업 자산의 이전 또는 일시 보관. 보안이 중요하고 전문적인 포장 기술이 필요한 기업 고객을 위한 맞춤형 보안 및 관리 시스템을 운영합니다.</p>
+            </div>
+            <div class="service-item">
+                <h3>고급 포장 특화 보관</h3>
+                <p>미술품, 골동품, 명품 가구 등 고가 물품에 대한 특수 보관 솔루션. 방습, 방충, 항온 환경이 완벽하게 유지되는 전용 구역에서 맞춤 제작된 포장재로 안전하게 보관합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="process" class="content-box">
+        <h2>부산보관이사 7단계 안전 진행 절차</h2>
+        <p>보관이사는 일반 이사보다 더 섬세하고 체계적인 관리가 필요합니다. 다음의 7단계 프로세스를 통해 고객님의 이사 만족도를 극대화합니다.</p>
+        <ul class="process-list">
+            <li>1. 전문 상담 및 무료 방문 견적 (물품량 및 보관 기간 확정)</li>
+            <li>2. 계약 및 이사/보관 일정 조율 (약관 상세 안내)</li>
+            <li>3. 1차 포장 및 운송 (보관에 최적화된 특수 포장 적용)</li>
+            <li>4. 안전한 창고 입고 및 물품 검수 (사진 촬영 및 목록 대조)</li>
+            <li>5. 보관 기간 중 환경 관리 (온/습도 및 보안 24시간 감시)</li>
+            <li>6. 2차 운송 및 정리 (약속된 날짜에 재포장 없이 운송)</li>
+            <li>7. 최종 만족도 확인 및 A/S 보장</li>
+        </ul>
+        <h3>보관 물품 관리 시스템의 전문성</h3>
+        <p>모든 보관 물품은 디지털 목록화되어 바코드 관리됩니다. 입고 시점의 물품 상태를 고화질 카메라로 기록하며, 보관 기간 중에도 고객 요청 시 물품의 상태 확인이 가능합니다. 특히 부산 지역의 습기에 대비하기 위해, 물품의 재질에 따라 비닐, 특수 부직포, 방습제 등을 이중으로 사용하여 장기간 보관에도 최상의 상태를 유지하도록 합니다. 2026년 강화된 환경 규제를 완벽하게 충족하는 시설에서 안심하고 짐을 맡기십시오.</p>
+    </section>
+
+    <hr>
+
+    <section id="busan-local-analysis" class="content-box">
+        <h2>부산 지역별 보관이사 특성과 맞춤형 솔루션</h2>
+        <p>부산은 지리적 특성상 해안가, 도심, 신도시, 구도심 지역별로 이사 환경과 보관 수요가 극명하게 나뉩니다. 저희는 지역별 데이터를 기반으로 최적화된 서비스를 제공합니다.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>지역명 키워드</th>
+                    <th>주요 고객층 및 수요 특징</th>
+                    <th>연관 검색 키워드 및 서비스 전략</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>**해운대구, 수영구 (마린시티, 센텀시티)**</td>
+                    <td>고소득층, 인테리어 공사, 해외 발령, 고급 아파트 입주 시기 조절</td>
+                    <td>해운대 보관이사 비용 투명, 마린시티 고급 보관, 센텀시티 이사짐보관, 부산 최고급 포장이사</td>
+                </tr>
+                <tr>
+                    <td>**부산진구, 동래구 (서면, 연산동)**</td>
+                    <td>재개발/재건축 이주, 상가 리모델링, 직장인 주거지 이동</td>
+                    <td>서면 원룸 보관이사, 동래구 아파트 이사, 부산진구 장기 보관료, 연산동 짐보관 창고</td>
+                </tr>
+                <tr>
+                    <td>**강서구, 기장군 (명지, 정관, 일광)**</td>
+                    <td>신규 입주 대기, 대형 가구/물품, 넓은 평수 보관 수요</td>
+                    <td>명지신도시 보관이사, 기장군 대형 컨테이너 보관, 정관읍 포장이사, 부산 외곽 보관료 저렴</td>
+                </tr>
+                <tr>
+                    <td>**사하구, 북구 (하단, 덕천)**</td>
+                    <td>대학가 원룸 보관, 소형 이사, 단기 주거 환경 변화</td>
+                    <td>부산 원룸 보관이사 가격, 사하구 이사짐 보관, 덕천동 보관 서비스, 부산 저렴한 보관이사</td>
+                </tr>
+                <tr>
+                    <td>**중구, 동구, 서구 (남포동, 초량)**</td>
+                    <td>구도심 소규모 이사, 상업 지구 집기 보관, 리모델링 보관</td>
+                    <td>남포동 소규모 보관, 부산 이사짐센터 비교, 동구 단기 보관, 국제시장 집기 보관</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>상기 지역 외에도 **금정구, 연제구, 사상구, 영도구** 등 부산 전 지역에 대한 완벽한 물류 네트워크와 보관 창고 접근성을 확보하고 있습니다. 부산 지역 이사 및 보관 관련 최신 통계(2026년 부산시 주택 정책 및 인구 이동 보고서)를 기반으로 서비스를 계획하고 실행하여 최적의 효율을 추구합니다.</p>
+
+        <h3>함께 많이 찾는 키워드 및 정보성 텍스트 확장</h3>
+        <p>부산보관이사를 고려하는 고객님들은 주로 '부산포장이사 잘하는 곳', '부산 컨테이너 보관료', '이사짐 보관 기간별 비용', '보관이사 보험 가입 여부' 등을 함께 검색합니다. 저희는 보관이사뿐만 아니라 일반 포장이사에서도 최고 수준의 서비스를 제공하며, 모든 보관 물품은 **전문 적재물 배상 책임 보험**에 가입되어 만일의 사고에 대비하고 있습니다. 고객님의 소중한 물건이 창고에 보관되는 동안, 천재지변이나 예상치 못한 사고로부터 완벽하게 보호받을 수 있도록 보장합니다. 보관 기간이 길어질수록 비용은 상대적으로 낮아지는 **장기 보관 할인 시스템**을 운영하여 고객의 부담을 덜어드립니다.</p>
+        <p>특히 2026년 기준, 이사 성수기인 봄철(3월~5월)과 가을철(9월~11월)에는 보관 창고 예약이 빠르게 마감되므로, 최소 1~2개월 전에 미리 상담을 받고 견적을 확정하는 것이 필수입니다. 부산 내 대학가 주변의 원룸 보관이사는 여름 방학 및 겨울 방학 기간에 집중되므로, 사전에 예약하시면 더욱 저렴하고 안정적인 서비스를 이용하실 수 있습니다.</p>
+        <p>저희는 **부산 아파트 보관이사, 부산 빌라 보관이사, 부산 주택 보관이사** 등 주거 형태에 관계없이 전문적인 맞춤 서비스를 제공하며, 특히 고층 아파트 이사를 위한 사다리차 및 스카이차 운영 노하우를 풍부하게 갖추고 있습니다.</p>
+    </section>
+
+    <hr>
+
+    <section id="faq" class="content-box">
+        <h2>자주 묻는 질문 (FAQ) - 부산보관이사편</h2>
+        
+        <h3>Q. 보관이사 비용은 일반 포장이사보다 많이 비싼가요?</h3>
+        <p>A. 보관이사는 '1차 이사(포장, 운송)' + '보관료' + '2차 이사(재운송, 정리)'의 3단계 비용이 합산되므로 일반 이사보다 총 비용이 높습니다. 하지만 보관료는 물품의 부피와 보관 기간에 따라 합리적으로 산정되며, 장기간 보관 시에는 할인율이 적용되어 일일 비용은 낮아집니다. 정확한 비용은 견적 상담 시 투명하게 안내해 드립니다.</p>
+
+        <h3>Q. 보관 기간 중 물품에 곰팡이가 생길 위험은 없나요?</h3>
+        <p>A. 저희 센터는 부산 지역의 고습도 환경에 완벽하게 대비된 **항온항습 시스템**을 갖춘 전문 보관 창고를 운영합니다. 일반 컨테이너 보관이 아닌, 내부 습도 60% 이하, 온도 $15^\circ \text{C}$ ~ $25^\circ \text{C}$를 유지하는 최적의 환경에서 물품을 보관하며, 모든 포장재는 방습 기능이 추가된 특수 자재를 사용하여 곰팡이 및 해충 발생을 원천적으로 차단합니다.</p>
+        
+        <h3>Q. 보관 창고는 아무 때나 방문해서 짐을 확인할 수 있나요?</h3>
+        <p>A. 보관 물품의 보안과 체계적인 관리를 위해 고객님의 임의 방문은 제한됩니다. 단, 필요한 경우 **사전 협의**를 통해 담당 직원 입회 하에 물품 확인이 가능합니다. 보통 입고 시 사진 촬영된 목록을 고객께 제공하며, 보관 중에는 요청 시 물품 상태 사진을 주기적으로 전송해 드립니다.</p>
+
+        <h3>Q. 보관이사 중 물품 파손이나 분실이 발생하면 어떻게 보상받을 수 있나요?</h3>
+        <p>A. 저희는 모든 보관 및 운송 과정에 대해 **적재물 배상 책임 보험**에 가입되어 있습니다. 계약서에 명시된 약관에 따라, 당사의 과실로 인해 파손 또는 분실이 발생할 경우 투명한 절차를 거쳐 신속하고 정확하게 보상해 드립니다. 보상 한도 및 절차는 계약 전 상세히 설명드립니다.</p>
+    </section>
+    
+    <hr>
+
+    <section id="trust-links" class="content-box">
+        <h2>공신력 있는 외부 정보 및 신뢰성 확보를 위한 참고 자료</h2>
+        <p>보관이사 서비스 선택 시 고객님의 권익 보호와 신뢰성 확인을 위해 다음 공신력 있는 기관의 정보를 참고하시길 권장합니다. 저희 업체는 관련 법규와 소비자 보호 규정을 철저히 준수합니다.</p>
+        <ul>
+            <li><a href="https://www.kostat.go.kr/portal/korea/kor_nw/2/1/index.board?bmn=20&cp=1&prg_seq=16&prg_id=D20040103&targetRow=1" target="_blank">통계청 (KOSIS) - 국내 인구 이동 및 이사 관련 공식 통계</a></li>
+            <li><a href="https://www.gov.kr/main?a=BA0203Search&keyword=%EC%9D%B4%EC%82%AC" target="_blank">대한민국 정부24 - 이사 관련 행정 절차 및 전입 신고 안내</a></li>
+            <li><a href="https://namu.wiki/w/%ED%8F%AC%EC%9E%A5%EC%9D%B4%EC%82%AC" target="_blank">나무위키 - 포장이사 관련 상세 정보 및 소비자 유의사항</a></li>
+            <li><a href="https://www.consumer.go.kr/contents/3067.do" target="_blank">한국소비자원 - 이사/운송 서비스 관련 소비자 피해 구제 및 분쟁 해결 기준</a></li>
+            <li><a href="https://www.busan.go.kr/bshousing/index" target="_blank">부산광역시 주택 관련 공식 정보 및 주거 정책 안내</a></li>
+            <li><a href="https://www.molit.go.kr/USR/policyData/m_34681/dtl.jsp?id=5165" target="_blank">국토교통부 - 물류 및 운송 관련 법규 및 가이드라인</a></li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <section id="estimate-form" class="content-box">
+        <h2>정교한 무료 견적 상담 신청서 (체류 시간 증대를 위한 상세 입력란)</h2>
+        <p>정확하고 신속한 견적을 위해 가능한 상세하게 정보를 입력해 주십시오. 입력된 정보가 많을수록 고객님께 가장 적합한 **2026년 최신 보관이사 비용**을 산출할 수 있습니다. 입력하신 정보는 오직 견적 산출 목적으로만 사용되며, 24시간 이내에 전문 상담원이 연락드립니다.</p>
+
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="name">성함:</label>
+                <input type="text" id="name" name="name" required placeholder="예: 홍길동">
+            </div>
+            
+            <div class="input-group">
+                <label for="tel">연락처 (필수):</label>
+                <input type="tel" id="tel" name="tel" required placeholder="'-' 없이 숫자만 입력 (예: 01012345678)">
+            </div>
+
+            <div class="input-group">
+                <label for="email">이메일:</label>
+                <input type="email" id="email" name="email" placeholder="견적서 수신용 (예: example@email.com)">
+            </div>
+
+            <div class="input-group">
+                <label for="service-type">희망 서비스 종류 (가장 중요):</label>
+                <select id="service-type" name="service-type" required>
+                    <option value="">-- 선택하세요 --</option>
+                    <option value="보관이사_장기">보관이사 (6개월 이상 장기)</option>
+                    <option value="보관이사_단기">보관이사 (1개월 ~ 6개월 단기)</option>
+                    <option value="일반 포장이사">일반 포장이사</option>
+                    <option value="원룸이사">원룸/소형 이사</option>
+                    <option value="사무실이사">사무실/기업 이사</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="moving-out-date">이사 나가는 날짜 (1차 포장 희망일):</label>
+                <input type="text" id="moving-out-date" name="moving-out-date" required placeholder="예: 2026/03/15">
+            </div>
+
+            <div class="input-group">
+                <label for="storage-period">예상 보관 기간 (개월 수 또는 일 수):</label>
+                <input type="text" id="storage-period" name="storage-period" required placeholder="예: 4개월 또는 180일">
+            </div>
+            
+            <div class="input-group">
+                <label for="moving-in-date">이사 들어가는 날짜 (2차 재운송 희망일):</label>
+                <input type="text" id="moving-in-date" name="moving-in-date" placeholder="예: 2026/07/20 (날짜 미정 시 '미정' 입력)">
+            </div>
+            
+            <div class="input-group">
+                <label for="start-address">출발지 상세 주소 (구/동 및 건물 유형):</label>
+                <input type="text" id="start-address" name="start-address" required placeholder="예: 부산 해운대구 우동 (마린시티 아파트 15층)">
+            </div>
+            
+            <div class="input-group">
+                <label for="end-address">도착지 상세 주소 (구/동 및 건물 유형):</label>
+                <input type="text" id="end-address" name="end-address" required placeholder="예: 부산 부산진구 전포동 (주택/빌라 2층)">
+            </div>
+
+            <div class="input-group">
+                <label for="start-floor">출발지 층수 및 사다리차 사용 여부:</label>
+                <input type="text" id="start-floor" name="start-floor" placeholder="예: 5층, 사다리차 필요함 / 1층, 사다리차 불필요">
+            </div>
+
+            <div class="input-group">
+                <label for="end-floor">도착지 층수 및 사다리차 사용 여부 (2차 이사):</label>
+                <input type="text" id="end-floor" name="end-floor" placeholder="예: 10층, 사다리차 필수 / 3층, 엘리베이터 사용">
+            </div>
+
+            <div class="input-group">
+                <label for="item-count">짐의 양 (가장 근접한 선택):</label>
+                <select id="item-count" name="item-count" required>
+                    <option value="원룸/1톤 미만">원룸/오피스텔 (1톤 미만)</option>
+                    <option value="10평대/2.5톤">10평대 아파트/빌라 (2.5톤)</option>
+                    <option value="20평대/5톤">20평대 아파트/주택 (5톤)</option>
+                    <option value="30평대 이상/7톤">30평대 이상 (7톤 이상)</option>
+                    <option value="사무실">사무실/기업 물품 (별도 협의)</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="special-items">특수 물품 (추가 비용 발생 가능):</label>
+                <textarea id="special-items" name="special-items" rows="4" placeholder="예: 벽걸이 에어컨(철거/설치 필요), 대형 냉장고, 피아노, 고가 미술품 유무"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="memo">기타 추가 요청 사항 (보관 환경, 시간 지정 등):</label>
+                <textarea id="memo" name="memo" rows="4" placeholder="예: 보관 창고 환경을 직접 확인하고 싶습니다. 재이사 시 오전 시간 희망"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">견적 요청서 최종 제출하고 상담 받기</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <section id="location" class="content-box">
+        <h2>센터 위치 및 서비스 지역 안내 (부산 전 지역)</h2>
+        <p>대표 상담소 위치: 부산 연제구 중앙대로 1234 (보관 창고는 보안상 별도 위치에 있음)</p>
+        <p>저희는 **부산 전 지역 (해운대구, 부산진구, 동래구, 수영구, 금정구, 기장군, 사하구, 연제구, 북구, 강서구, 사상구, 영도구, 중구, 동구, 서구)** 에서 동일한 수준의 최고급 보관이사 서비스를 제공합니다. 지역별 물류 전문팀이 배정되어 신속하고 정확한 이사 서비스를 보장합니다.</p>
+        <iframe src="https://maps.google.com/maps?q=부산%20연제구%20중앙대로%201234&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <footer>
+        <p>고객 만족 센터: <strong>051-123-4567</strong> (24시간 상담 가능) | 이메일 문의: help@your-domain.com</p>
+        <p>사업자 등록번호: 123-45-67890 | 주소: 부산 연제구 중앙대로 1234</p>
+        <p>&copy; 2026 부산보관이사 전문 센터. All rights reserved. | 부산 전 지역 안전한 이사 및 보관 전문.</p>
+    </footer>
+</body>
+
+  
